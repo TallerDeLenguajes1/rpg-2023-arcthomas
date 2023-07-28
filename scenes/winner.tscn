@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjdol2xkcie1s"]
+
+[ext_resource type="Script" path="res://scripts/winner.cs" id="1_adk5u"]
+[ext_resource type="Texture2D" uid="uid://bc210mgcc0k38" path="res://rcs/throneroom.png" id="1_ffg66"]
+[ext_resource type="FontFile" uid="uid://diwacafhs4ekp" path="res://rcs/Pixel_NES.otf" id="2_ib4kg"]
+[ext_resource type="Texture2D" uid="uid://dt2iw3jgm0h81" path="res://rcs/archerok.png" id="4_d53lu"]
+
+[node name="Winner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_adk5u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00347222
+anchor_top = -0.339506
+anchor_right = 0.99566
+anchor_bottom = 1.43673
+texture = ExtResource("1_ffg66")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171007
+anchor_top = 0.0648148
+anchor_right = 0.78125
+anchor_bottom = 0.297839
+offset_bottom = 1.52588e-05
+theme_override_fonts/font = ExtResource("2_ib4kg")
+theme_override_font_sizes/font_size = 106
+text = "¡Ganaste!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Trono" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -326.5
+offset_top = -146.0
+offset_right = 326.5
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ib4kg")
+theme_override_font_sizes/font_size = 26
+text = "El trono es tuyo ahora, "
+horizontal_alignment = 1
+
+[node name="WSprite" type="Sprite2D" parent="."]
+position = Vector2(125, 556)
+scale = Vector2(6.40909, 6.40909)
+texture = ExtResource("4_d53lu")

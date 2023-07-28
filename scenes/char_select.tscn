@@ -1,0 +1,518 @@
+[gd_scene load_steps=18 format=3 uid="uid://bmcp7i57q8ijt"]
+
+[ext_resource type="Script" path="res://scripts/char_select.cs" id="1_wpmkr"]
+[ext_resource type="Texture2D" uid="uid://h8akhn356eio" path="res://rcs/descarga (1).jpg" id="1_ydfmh"]
+[ext_resource type="FontFile" uid="uid://diwacafhs4ekp" path="res://rcs/Pixel_NES.otf" id="3_cmk37"]
+[ext_resource type="Script" path="res://scripts/lista_de_personajes.cs" id="3_mm6yn"]
+[ext_resource type="Texture2D" uid="uid://d0mura7lnw2m4" path="res://rcs/bardok.png" id="5_g6oc6"]
+[ext_resource type="Texture2D" uid="uid://dt2iw3jgm0h81" path="res://rcs/archerok.png" id="5_v6fnt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax2n3"]
+bg_color = Color(0, 0, 0, 0.54902)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oi1wd"]
+font = ExtResource("3_cmk37")
+font_size = 60
+
+[sub_resource type="Animation" id="Animation_1jyh3"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmtpw"]
+_data = {
+"fade_in": SubResource("Animation_1jyh3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw5wa"]
+bg_color = Color(0, 0, 0, 0.427451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6j0u"]
+bg_color = Color(0.678431, 0.678431, 0.678431, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esiog"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.521569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hricw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td5lh"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.890196, 0.890196, 0.890196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl6as"]
+bg_color = Color(0.6, 0.6, 0.6, 0.639216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amvwo"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.858824, 0.858824, 0.858824, 1)
+
+[node name="CharSelect" type="Node2D"]
+script = ExtResource("1_wpmkr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 651.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_top = -1042.0
+offset_right = 1281.0
+offset_bottom = 654.0
+texture = ExtResource("1_ydfmh")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = -16.0
+offset_right = 1199.0
+offset_bottom = 661.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ax2n3")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 6.0
+offset_right = 1097.0
+offset_bottom = 80.0
+text = "Selección de personajes"
+label_settings = SubResource("LabelSettings_oi1wd")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.00261
+anchor_bottom = 0.998464
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_nmtpw")
+}
+
+[node name="ListaPersonajes" type="Node2D" parent="."]
+script = ExtResource("3_mm6yn")
+
+[node name="PJ" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 193.0
+offset_top = 131.0
+offset_right = 1185.0
+offset_bottom = 618.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_g6oc6")
+
+[node name="1" type="Button" parent="ListaPersonajes/PJ" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ2" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 351.0
+offset_top = 132.0
+offset_right = 1343.0
+offset_bottom = 619.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ2" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="2" type="Button" parent="ListaPersonajes/PJ2" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ2" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ3" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 517.0
+offset_top = 134.0
+offset_right = 1509.0
+offset_bottom = 621.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ3" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="3" type="Button" parent="ListaPersonajes/PJ3" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ3" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ4" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 682.0
+offset_top = 135.0
+offset_right = 1674.0
+offset_bottom = 622.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="4" type="Button" parent="ListaPersonajes/PJ4" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ4" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ4" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="PJ5" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 847.0
+offset_top = 134.0
+offset_right = 1839.0
+offset_bottom = 621.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ5" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="5" type="Button" parent="ListaPersonajes/PJ5" groups=["CharacterButtons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ5" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ6" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 199.0
+offset_top = 341.0
+offset_right = 1191.0
+offset_bottom = 828.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ6" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="6" type="Button" parent="ListaPersonajes/PJ6" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ6" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ7" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 357.0
+offset_top = 342.0
+offset_right = 1349.0
+offset_bottom = 829.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ7" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="7" type="Button" parent="ListaPersonajes/PJ7" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ7" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ8" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 523.0
+offset_top = 344.0
+offset_right = 1515.0
+offset_bottom = 831.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ8" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="8" type="Button" parent="ListaPersonajes/PJ8" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ8" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ9" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 688.0
+offset_top = 345.0
+offset_right = 1680.0
+offset_bottom = 832.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ9" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="9" type="Button" parent="ListaPersonajes/PJ9" groups=["CharacterButtons"]]
+layout_mode = 0
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ9" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="PJ10" type="Control" parent="ListaPersonajes"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 853.0
+offset_top = 344.0
+offset_right = 1845.0
+offset_bottom = 831.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ListaPersonajes/PJ10" groups=["CharacterSprites"]]
+z_index = 2
+position = Vector2(64.1534, 105.438)
+scale = Vector2(2.96023, 2.96023)
+texture = ExtResource("5_v6fnt")
+
+[node name="10" type="Button" parent="ListaPersonajes/PJ10" groups=["CharacterButtons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0241935
+anchor_top = 0.129363
+anchor_right = 0.100806
+anchor_bottom = 0.320329
+theme_override_styles/normal = SubResource("StyleBoxFlat_aw5wa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6j0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_esiog")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hricw")
+toggle_mode = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Etiqueta" type="Label" parent="ListaPersonajes/PJ10" groups=["Etiquetas"]]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_cmk37")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 338.0
+offset_top = 526.0
+offset_right = 790.0
+offset_bottom = 606.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Confirm" type="Button" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.234513
+anchor_top = 0.3875
+anchor_right = 0.889381
+anchor_bottom = 1.2625
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cmk37")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxFlat_td5lh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sl6as")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_amvwo")
+action_mode = 0
+text = "Confirmar"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ListaPersonajes/PJ9/9" to="ListaPersonajes" method="_Ready"]
