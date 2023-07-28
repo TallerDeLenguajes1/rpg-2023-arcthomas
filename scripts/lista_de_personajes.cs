@@ -11,17 +11,6 @@ public partial class lista_de_personajes : Node2D
     private int selout = 0;
     public override void _Ready()
     {
-        string jsonString;
-        // Leer el archivo JSON
-        try
-        {
-            jsonString = File.ReadAllText("ListaPersonajes.json");
-        }
-        catch (Exception e)
-        {
-            GD.Print("Error al leer el archivo JSON: " + e.Message);
-            return;
-        }
         List<Button> characterButtons = new List<Button>();
         List<Button> selectedButtons = new List<Button>();
         personajesJson instpj = new personajesJson();
@@ -29,7 +18,8 @@ public partial class lista_de_personajes : Node2D
         listapj = instpj.leerPersonajes("ListaPersonajes.json");
         var confirm = GetNode("../Control2/Confirm") as Button;
         confirm.Disabled = true;
-        // Recorrer la lista de objetos y crear nodos para cada uno
+
+        // Recorrer la lista de objetos y modificar nodos
         int i = 0;
         foreach (personaje jsonpj in listapj)
         {
@@ -64,7 +54,8 @@ public partial class lista_de_personajes : Node2D
                         break;
                 }
             }
-            // Obtener todos los botones de personajes en la escena
+
+            // Obtener todos los botones de personajes en la escena y conectar señales
             foreach (Node node in GetTree().GetNodesInGroup("CharacterButtons"))
             {
                 if (node is Button button)
